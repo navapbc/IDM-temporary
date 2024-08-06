@@ -1,0 +1,112 @@
+// custom SCSS (or CSS) goes here
+
+// Standard tag overrides
+
+h1{
+	font-weight:800;
+}
+
+details {
+  margin: .75rem 0;
+}
+
+//JTD theme overrides
+
+.hero-text {
+  font-size: 4rem !important;
+}
+.site-title {
+	font-size: 1rem !important;
+	font-weight: 700;
+}
+.main{
+  max-width:100%;
+}
+.main-content-wrap{
+	padding-left: 3rem;
+  max-width: $content-width;
+}
+.side-bar {
+  z-index: 0;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: $sidebar-color;
+
+  @include mq(md) {
+    flex-flow: column nowrap;
+    position: fixed;
+    width: $nav-width-md;
+    height: 100%;
+    border-right: $border $border-color;
+    align-items: flex-end;
+  }
+
+  @include mq(lg) {
+  	//This diverges from normal
+    width: $nav-width;
+    min-width: $nav-width;
+  }
+
+  & + .main {
+    @include mq(md) {
+      margin-left: $nav-width-md;
+    // margin-left: 0;
+    }
+
+    @include mq(lg) {
+      // This diverges from main
+       margin-left: #{$nav-width};
+    }
+
+    .main-header {
+      display: none;
+      background-color: $sidebar-color;
+
+      @include mq(md) {
+        display: flex;
+        background-color: $body-background-color;
+      }
+
+      &.nav-open {
+        display: block;
+
+        @include mq(md) {
+          display: flex;
+        }
+      }
+    }
+  }
+}
+
+// Image utilites
+
+.image-popout-horiz {
+  position: relative;
+/*  width: calc(100% + (100vw - 100%) / 2);
+*/  max-width: 60vw;
+    min-width: 100%;
+    /*margin-left: -1.25rem;*/
+    outline: .75rem solid $feedback-color;
+    background-color: $feedback-color;
+}
+.image-popout-vert {
+  position: relative;
+/*  width: calc(100% + (100vw - 100%) / 2);
+*/  max-height: 60vh;
+    min-height: 100%;
+    /*margin-left: -1.25rem;*/
+    outline: .75rem solid $feedback-color;
+    background-color: $feedback-color;
+}
+
+//Styling details tags for best practices requirements
+
+.req {
+  margin-bottom:.5em;
+}
+.req-source {
+  margin-top:0;
+  font-size: .85rem;
+  font-weight: 600;
+}
+
